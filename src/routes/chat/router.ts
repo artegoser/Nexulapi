@@ -1,15 +1,21 @@
 import { config } from "dotenv";
-import { ChatReply, ChatRequest } from "./chat.interface";
-import FreeGpt35Turbo from "./models/FreeGpt35Turbo";
+import { ChatReply, ChatRequest, GPT4FreeChatModels } from "./chat.interface";
+import gpt4free from "./models/gpt4free";
 import { ConfigService } from "../../config/config.service";
 
 export default async function router(request: ChatRequest): Promise<ChatReply> {
   const config = new ConfigService();
 
-  switch (request.model) {
-    case "gpt-3.5-turbo":
-      return await FreeGpt35Turbo(request, config);
-    default:
-      return await FreeGpt35Turbo(request, config);
+  if (
+    Object.values(GPT4FreeChatModels).includes(
+      request.model as GPT4FreeChatModels
+    )
+  ) {
+    request.model = request.model.replace("free-", "");
+    return await gpt4free(request, config);
+  } else {
+    return {
+      content: "Model not supported",
+    };
   }
 }

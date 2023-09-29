@@ -8,7 +8,7 @@
     "build": "tsc",
     "dev": "tsc-watch --onSuccess \"node ./dist/app.js\"",
     "start": "node dist/app.js",
-    "ts-to-json": "typescript-json-schema src/routes/chat/chat.interface.ts"
+    "ts-to-json": "typescript-json-schema src/routes/chat/chat.interface.ts ChatRequest -0 -o src/routes/chat/chat.interface.json --required"
   },
   "keywords": [
     "llm",

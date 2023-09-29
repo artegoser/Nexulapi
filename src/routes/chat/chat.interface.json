@@ -1,0 +1,182 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "AllModels": {
+            "enum": [
+                "babbage-002",
+                "code-davinci-002",
+                "davinci-002",
+                "free-bloom",
+                "free-claude-instant-v1",
+                "free-claude-v1",
+                "free-claude-v2",
+                "free-code-davinci-002",
+                "free-command-light-nightly",
+                "free-command-nightly",
+                "free-flan-t5-xxl",
+                "free-gpt-3.5-turbo",
+                "free-gpt-3.5-turbo-16k",
+                "free-gpt-3.5-turbo-16k-0613",
+                "free-gpt-4",
+                "free-gpt-4-0613",
+                "free-gpt-neox-20b",
+                "free-h2ogpt-gm-oasst1-en-2048-falcon-40b-v1",
+                "free-h2ogpt-gm-oasst1-en-2048-falcon-7b-v3",
+                "free-h2ogpt-gm-oasst1-en-2048-open-llama-13b",
+                "free-llama13b-v2-chat",
+                "free-llama7b-v2-chat",
+                "free-oasst-sft-1-pythia-12b",
+                "free-oasst-sft-4-pythia-12b-epoch-3.5",
+                "free-palm",
+                "free-santacoder",
+                "free-text-ada-001",
+                "free-text-babbage-001",
+                "free-text-curie-001",
+                "free-text-davinci-002",
+                "free-text-davinci-003",
+                "google-flan-t5-xxl",
+                "gpt-3.5-turbo",
+                "gpt-3.5-turbo-0301",
+                "gpt-3.5-turbo-0613",
+                "gpt-3.5-turbo-16k",
+                "gpt-3.5-turbo-16k-0613",
+                "gpt-3.5-turbo-instruct",
+                "gpt-4",
+                "gpt-4-0314",
+                "gpt-4-0613",
+                "gpt-4-32k",
+                "gpt-4-32k-0314",
+                "gpt-4-32k-0613",
+                "gpt2",
+                "text-davinci-002",
+                "text-davinci-003"
+            ],
+            "type": "string"
+        },
+        "Function": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "parameters": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                }
+            },
+            "required": [
+                "description",
+                "name",
+                "parameters"
+            ],
+            "type": "object"
+        },
+        "Message": {
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "role": {
+                    "enum": [
+                        "assistant",
+                        "system",
+                        "user"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "content",
+                "role"
+            ],
+            "type": "object"
+        }
+    },
+    "properties": {
+        "frequency_penalty": {
+            "type": "number"
+        },
+        "function_call": {
+            "anyOf": [
+                {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "type": "object"
+                },
+                {
+                    "enum": [
+                        "auto",
+                        "none"
+                    ],
+                    "type": "string"
+                }
+            ]
+        },
+        "functions": {
+            "items": {
+                "$ref": "#/definitions/Function"
+            },
+            "type": "array"
+        },
+        "logit_bias": {
+            "additionalProperties": {
+                "type": "number"
+            },
+            "type": "object"
+        },
+        "max_tokens": {
+            "type": "number"
+        },
+        "messages": {
+            "items": {
+                "$ref": "#/definitions/Message"
+            },
+            "type": "array"
+        },
+        "model": {
+            "$ref": "#/definitions/AllModels"
+        },
+        "n": {
+            "type": "number"
+        },
+        "presence_penalty": {
+            "type": "number"
+        },
+        "stop": {
+            "anyOf": [
+                {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "string"
+                }
+            ]
+        },
+        "stream": {
+            "type": "boolean"
+        },
+        "temperature": {
+            "type": "number"
+        },
+        "top_p": {
+            "type": "number"
+        },
+        "user": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "messages",
+        "model"
+    ],
+    "type": "object"
+}
+

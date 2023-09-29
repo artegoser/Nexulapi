@@ -21,7 +21,7 @@ export interface ChatRequest {
 }
 
 export interface ChatReply {
-  model: AllModels;
+  model?: AllModels;
   content: string;
 
   usage?: {
@@ -52,7 +52,8 @@ export interface Function {
 export type AllModels =
   | OpenAIChatModels
   | GPT4FreeChatModels
-  | HuggingFaceChatModels;
+  | HuggingFaceChatModels
+  | string;
 
 export enum OpenAIChatModels {
   //gpt-4
