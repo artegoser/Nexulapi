@@ -8,7 +8,8 @@
     "build": "npm run ts-to-json && tsc",
     "dev": "npm run ts-to-json && tsc-watch --onSuccess \"node ./dist/app.js\"",
     "start": "npm run ts-to-json && node dist/app.js",
-    "ts-to-json": "typescript-json-schema src/routes/chat/chat.interface.ts ChatRequest -0 -o src/schemas/chat/schema.json --required"
+    "ts-to-json": "typescript-json-schema src/routes/chat/chat.interface.ts ChatRequest -0 -o src/schemas/chat/schema.json --required",
+    "start:docker": "node app.js"
   },
   "keywords": [
     "llm",
