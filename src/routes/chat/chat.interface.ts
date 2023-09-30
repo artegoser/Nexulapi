@@ -52,8 +52,7 @@ export interface Function {
 export type AllModels =
   | OpenAIChatModels
   | GPT4FreeChatModels
-  | HuggingFaceChatModels
-  | string;
+  | HuggingFaceChatModels;
 
 export enum OpenAIChatModels {
   //gpt-4

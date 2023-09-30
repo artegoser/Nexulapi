@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { FastifyChatRoute } from "./chat.interface";
 import router from "./router";
-import schema from "./chat.interface.json";
+import schema from "../../schemas/chat/schema.json";
 
 export default async function chat(fastify: FastifyInstance) {
   const schemaF = { schema: { body: schema } };

@@ -2,7 +2,7 @@ import { ConfigService } from "../../../config/config.service";
 import { ChatReply, ChatRequest } from "../chat.interface";
 import axios from "axios";
 export default async function gpt4free(
-  { model, messages, temperature }: ChatRequest,
+  data: ChatRequest,
   config: ConfigService
 ): Promise<ChatReply> {
   const response = await axios.request({
@@ -11,11 +11,7 @@ export default async function gpt4free(
     headers: {
       "content-type": "application/json",
     },
-    data: {
-      model,
-      messages,
-      temperature,
-    },
+    data,
   });
 
   const content = response.data.choices[0].message.content;
@@ -25,7 +21,7 @@ export default async function gpt4free(
   }
 
   return {
-    model,
+    model: data.model,
     content,
   };
 }
