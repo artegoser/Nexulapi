@@ -13,10 +13,9 @@ import openai from "./models/openai";
 
 export default async function router(
   request: ChatRequest,
-  openaiLib: OpenAI
+  openaiLib: OpenAI,
+  config: ConfigService
 ): Promise<ChatReply> {
-  const config = new ConfigService();
-
   const gpt4freeModels = Object.values(GPT4FreeChatModels);
   const openaiModels = Object.values(OpenAIChatModels);
   const huggingfaceModels = Object.values(HuggingFaceChatModels);
