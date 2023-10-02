@@ -14,6 +14,8 @@ class App {
       trustProxy: this.config.reverse_proxy,
     });
 
+    fastify.register(require("@fastify/cors"));
+
     fastify.register(chat);
 
     fastify.listen(
